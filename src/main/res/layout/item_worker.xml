@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/card_dark"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvWorkerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="John Doe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvWorkerRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            tools:text="Worker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkerName" />
+            
+        <TextView
+            android:id="@+id/tvWorkerShiftStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:text="Shift: Active"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkerRole" />
+
+        <TextView
+            android:id="@+id/tvWorkerStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Started: 09:14 AM"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/tvWorkerShiftStatus"
+            app:layout_constraintTop_toTopOf="@+id/tvWorkerShiftStatus" />
+
+        <TextView
+            android:id="@+id/tvWorkerStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="SAFE"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tvWorkerTrend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="➡ Stable"
+            android:textColor="#CCCCCC"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkerStatus" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Improved Sunlight-Friendly Dark Theme Palette -->
+    <color name="background_dark">#1C1F26</color> <!-- Soft Dark Blue-Gray -->
+    <color name="background_gradient_end">#181A20</color>
+    <color name="card_dark">#242A33</color> <!-- Slightly lighter for cards -->
+    <color name="primary_blue">#2196F3</color>
+    
+    <color name="status_safe">#4CAF50</color>
+    <color name="status_caution">#FFC107</color>
+    <color name="status_danger">#F44336</color>
+    <color name="text_primary">#EAEAEA</color>
+    <color name="text_secondary">#AAAAAA</color>
+</resources>

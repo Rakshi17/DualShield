@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dashboard_gradient"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <!-- Header -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#1AFFFFFF"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COMMAND CENTER"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1"/>
+            </androidx.appcompat.widget.Toolbar>
+
+            <!-- 1. Global Emergency Banner -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvEmergencyAlert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="@color/status_safe"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    
+                    <ImageView
+                        android:id="@+id/ivEmergencyIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/presence_online"
+                        app:tint="@color/white" />
+                        
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+                        
+                        <TextView
+                            android:id="@+id/tvGlobalStatusTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ALL SYSTEMS STABLE"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                            
+                        <TextView
+                            android:id="@+id/tvEmergencyDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No active risks detected. Scanning..."
+                            android:textColor="#E6FFFFFF"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Section Title: Infrastructure -->
+            <TextView
+                android:id="@+id/tvSectionInfra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="INFRASTRUCTURE STATUS"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvEmergencyAlert" />
+
+            <!-- 2. Infrastructure Status Panel -->
+            <GridLayout
+                android:id="@+id/glInfra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:columnCount="2"
+                android:rowCount="1"
+                app:layout_constraintTop_toBottomOf="@id/tvSectionInfra">
+                
+                <!-- Gas Sensor -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="8dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#33FFFFFF">
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="GAS LEVEL (MQ)"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="10sp" />
+                            
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="4dp">
+                            <TextView
+                                android:id="@+id/tvInfraGas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 ppm"
+                                android:textColor="@color/status_safe"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/tvInfraGasState"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" (SAFE)"
+                                android:textColor="@color/status_safe"
+                                android:textSize="12sp"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="2dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Structural Sensor -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="8dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#33FFFFFF">
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="STRUCTURAL VIBE"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="10sp" />
+                            
+                        <TextView
+                            android:id="@+id/tvInfraStructure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="STABLE"
+                            android:textColor="@color/status_safe"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </GridLayout>
+
+            <!-- System Health (Infra) -->
+            <LinearLayout
+                android:id="@+id/llInfraHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/glInfra">
+                <TextView
+                    android:id="@+id/tvConnectionLatency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latency: 12ms"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Node Battery: 91%"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- Section Title: AI Insights -->
+            <TextView
+                android:id="@+id/tvSectionAI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="AI PREDICTION CENTER"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llInfraHealth" />
+
+            <!-- 4. AI Prediction Center -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvAiCenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="#1A2196F3"
+                app:cardCornerRadius="8dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4D2196F3"
+                app:layout_constraintTop_toBottomOf="@id/tvSectionAI">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="LSTM SIMULATION ACTIVE"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                            
+                        <TextView
+                            android:id="@+id/tvAiRiskProb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Risk: 4%"
+                            android:textColor="@color/status_safe"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvAiAnalysisDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="All workers and zones stable. No anomalies detected in current time-series window. Confidence: 96%."
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvPredictionTimer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Next Risk Window: Safe for > 2:00:00"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="10sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Section Title: Worker Monitoring -->
+            <TextView
+                android:id="@+id/tvSectionWorkers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="LIVE WORKER MONITORING"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvAiCenter" />
+
+            <!-- 3. Live Worker Monitoring Grid (Simulation card for now, usually RecyclerView) -->
+            <GridLayout
+                android:id="@+id/glWorkers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:columnCount="2"
+                app:layout_constraintTop_toBottomOf="@id/tvSectionWorkers">
+            </GridLayout>
+
+            <!-- Section Title: Zone Map -->
+            <TextView
+                android:id="@+id/tvSectionZones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="ZONE VISUALIZATION"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/glWorkers" />
+
+            <!-- 5. Zone Visualization Map (Placeholder Area) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/card_dark"
+                app:cardCornerRadius="8dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#33FFFFFF"
+                app:layout_constraintTop_toBottomOf="@id/tvSectionZones">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="[ MAP SIMULATION ]"
+                        android:textColor="@color/text_secondary"
+                        android:letterSpacing="0.2"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <TextView android:textColor="@color/status_safe" android:text="Zone A: Safe   " android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:textColor="@color/status_caution" android:text="Zone B: Active   " android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:textColor="@color/text_secondary" android:text="Zone C: Offline" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Overlay border for critical -->
+    <View
+        android:id="@+id/vCriticalBorder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_circle_status"
+        android:backgroundTint="#AAFF0000"
+        android:visibility="gone" />
+
+    <!-- Lock screen for critical -->
+    <LinearLayout
+        android:id="@+id/llLockScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#CC000000"
+        android:visibility="gone"
+        android:padding="32dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FULL SITE CRITICAL"
+            android:textColor="@color/status_danger"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BOTH INFRASTRUCTURE AND WORKERS ARE IN CRITICAL STATE."
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnAcknowledgeCritical"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="RESCUE WORKER"
+            android:backgroundTint="@color/status_danger"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</FrameLayout>

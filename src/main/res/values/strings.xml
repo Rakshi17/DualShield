@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DualShield AI</string>
+    <string name="worker_dashboard_title">Worker Safety Panel</string>
+    <string name="supervisor_dashboard_title">Supervisor Overview</string>
+    <string name="risk_score_label">Risk Score</string>
+    <string name="emergency_help">EMERGENCY HELP</string>
+    <string name="attendance_verified">Attendance Verified</string>
+    <string name="sensor_status">Sensor Status: Connected</string>
+    <string name="safe">SAFE</string>
+    <string name="warning">WARNING</string>
+    <string name="critical">CRITICAL</string>
+    <string name="workers_active">Workers Active</string>
+    <string name="critical_alerts">Critical Alerts</string>
+</resources>
